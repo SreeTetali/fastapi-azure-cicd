@@ -40,3 +40,22 @@ The API will now be running at http://127.0.0.1:8000.
 2. Install the "Live Server" extension (by Ritwick Dey).
 3. Right-click `frontend/index.html` and select "Open with Live Server".
 4. The web page will automatically open and fetch data from the local FastAPI backend.
+
+## ⚙️ CI/CD Pipeline & Enterprise Architecture Mapping
+
+This project utilizes automated GitHub Actions workflows to enforce code quality and automate deployments. To demonstrate scalable DevOps knowledge, the architecture was designed with enterprise equivalents in mind:
+
+| Capability | Portfolio Implementation | Enterprise Equivalent | Purpose |
+| :--- | :--- | :--- | :--- |
+| **Continuous Integration** | GitHub Actions | Jenkins, GitLab CI | Automates testing and linting on every push. |
+| **Code Quality & Linting** | Flake8 & Pytest | SonarQube | Blocks merges if code is poorly formatted or fails unit tests. |
+| **Secrets Management** | GitHub Secrets | **HashiCorp Vault**, AWS Secrets Manager | Prevents hardcoding passwords or API keys in the source code. |
+| **Artifact Management** | GitHub Packages | **JFrog Artifactory**, Sonatype Nexus | Stores versioned software builds securely before deployment. |
+| **Hosting & Orchestration** | Azure App Service | **OpenShift**, Kubernetes (AKS/EKS) | Scalable hosting environments for decoupled application tiers. |
+| **Configuration Mgmt** | Azure Web App Action | **Ansible**, Chef, Puppet | Standardizes server/VM configuration (Note: Abstracted here via Azure PaaS). |
+| **Observability & Logs** | Azure App Insights | **Datadog, New Relic**, Splunk | Monitors application health, tracks errors, and logs production traffic. |
+
+### Branching Strategy
+- **Feature Branches:** Pushing to `feature-**` triggers the CI pipeline (Linting & Testing).
+- **Pull Requests:** Opening a PR to `main` requires passing CI checks before merging is allowed.
+- **Main Branch:** Merging to `main` triggers the CD pipeline to automatically deploy to Azure.
