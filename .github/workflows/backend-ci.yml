@@ -2,13 +2,13 @@ name: Backend CI Pipeline
 
 on:
   push:
-    branches: [ "**" ] # Run when we push our current branch
-  paths-ignore:
-      - '**.md'        # Ignores all Markdown files (like your README)
-      - '.gitignore'   # Ignores git configuration changes
+    branches: [ "**" ]  # Run when we push our current branch
+    paths-ignore:
+      - '**.md'   # Ignores all Markdown files (like your README)
+      - '.gitignore' # Ignores git configuration changes
   pull_request:
     branches: [ "main" ] # Run when someone tries to merge into main
-
+    
 jobs:
   build-and-test:
     runs-on: ubuntu-latest # 2. ENVIRONMENT: Spin up a fresh Linux server
